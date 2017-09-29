@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function users_rubrics()
+    {
+        return $this->hasMany('App\Users_rubric');
+    }
 }
