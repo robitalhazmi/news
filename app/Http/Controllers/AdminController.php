@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Users_rubric;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -15,9 +16,12 @@ class AdminController extends Controller
 
   public function getAdmin()
   {
-    $users = User::where('username', '!=', 'admin')->get();
-    $users_rubrics = Users_rubric::join('rubrics', 'users_rubrics.rubrics_id', '=', 'rubrics.id')->get();
-    return view('admin', compact('users', 'users_rubrics'));
+    if (Auth::user()->username == 'admin') {
+      $users = User::where('username', '!=', 'admin')->get();
+      $users_rubrics = Users_rubric::join('rubrics', 'users_rubrics.rubrics_id', '=', 'rubrics.id')->get();
+      return view('admin', compact('users', 'users_rubrics'));
+    }
+    return redirect()->route('login');
   }
 
   public function addUser(Request $request)

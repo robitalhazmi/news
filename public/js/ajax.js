@@ -47,4 +47,16 @@ $(document).ready(function() {
 		$("#myModal").css({ 'display': "none"});
 		$( ".modal-backdrop" ).remove();
 	});
+
+	$('#add-news').on('submit', function(e) {
+		e.preventDefault();
+		$.ajax({
+			type:	'post',
+			url: 'addNews',
+			data: $('#add-news').serialize(),
+			success: function(data, status) {
+				console.log(data.message);
+			}
+		});
+	});
 });

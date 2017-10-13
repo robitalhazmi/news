@@ -8,3 +8,4 @@ Route::get('dashboard', 'DashboardController@getDashboard')->name('dashboard');
 //postData
 Route::post('login', 'LoginController@postLogin')->name('login.post');
 Route::post('addUser', 'AdminController@addUser')->name('addUser');
+Route::post('addNews', 'DashboardController@addNews')->name('addNews');

@@ -20,4 +20,9 @@ class Users_rubric extends Model
   {
     return $this->belongsTo('App\Rubric');
   }
+
+  public function newss()
+  {
+    return $this->hasMany('App\News');
+  }
 }

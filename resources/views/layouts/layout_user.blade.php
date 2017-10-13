@@ -36,7 +36,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="dist/img/logo-unair-color.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Admin</span>
+              <span class="hidden-xs">{{Auth::user()->username}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -44,7 +44,7 @@
                 <img src="dist/img/logo-unair-color.png" class="img-circle" alt="User Image">
 
                 <p>
-                  Admin
+                  {{Auth::user()->username}}
                   {{-- <small>Member since Nov. 2012</small> --}}
                 </p>
               </li>
@@ -71,16 +71,16 @@
           <img src="dist/img/logo-unair-color.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Admin</p>
+          <p>{{Auth::user()->username}}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li id="user">
-          <a href="admin">
-            <i class="fa fa-dashboard"></i> <span>Olah Pengguna</span>
+        <li id="dashboard">
+          <a href="dashboard">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
       </ul>

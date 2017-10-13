@@ -31,11 +31,6 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <style media="screen">
-    .checkbox, .radio {
-      margin-top: auto;
-    }
-  </style>
 @endsection
 
 @section('content')
@@ -175,7 +170,7 @@
                   <th>Id</th>
                   <th>Nama Pengguna</th>
                   <th>Rubrik</th>
-                  <th>Waktu Ditambahkan</th>
+                  <th>Waktu Dibuat</th>
                 </tr>
                 </thead>
                 <tbody>
