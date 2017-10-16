@@ -52,7 +52,6 @@ $(document).ready(function() {
 	$('#add-news').on('submit', function(e) {
 		e.preventDefault();
 		var data = CKEDITOR.instances.editor1.getData();
-		console.log(data);
 		$('#content-hidden')[0].innerHTML = data;
 		$.ajax({
 			type:	'post',
