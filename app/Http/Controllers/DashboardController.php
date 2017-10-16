@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Users_rubric;
 use Auth;
 use App\News;
+use App\User;
 
 class DashboardController extends Controller
 {

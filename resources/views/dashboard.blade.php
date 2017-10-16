@@ -39,8 +39,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Text Editors
-        <small>Advanced form element</small>
+        News
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -55,8 +54,7 @@
         <div class="col-md-12">
           <div class="box box-info">
             <div class="box-header">
-              <h3 class="box-title">CK Editor
-                <small>Advanced and full of features</small>
+              <h3 class="box-title">Tulis Berita Baru
               </h3>
             </div>
             <!-- /.box-header -->
@@ -90,8 +88,9 @@
                 </div>
                 <div class="form-group">
                   <label>Konten Berita</label>
-                  <textarea id="editor1" name="content" rows="10" cols="80">
+                  <textarea id="editor1" rows="10" cols="80">
                   </textarea>
+                  <textarea style="display: none;" id="content-hidden" name="content" type="hidden" rows="8" cols="80"></textarea>
                 </div>
                 <div class="form-group" style="margin-top: 15px;">
                   <button type="submit" class="btn btn-primary">Kirim</button>
@@ -112,7 +111,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Id</th>
+                  <th>#</th>
                   <th>Rubrik</th>
                   <th>Judul</th>
                   <th>Deskripsi</th>
@@ -120,9 +119,15 @@
                 </tr>
                 </thead>
                 <tbody>
+                  @php
+                    $i=0;
+                  @endphp
                 @foreach ($news as $news)
+                  @php
+                    $i++;
+                  @endphp
                   <tr>
-                    <td>{{ $news->id }}</td>
+                    <td>{{ $i }}</td>
                     <td>{{ $news->name }}</td>
                     <td>{{ $news->title }}</td>
                     <td>{{ $news->description }}</td>
@@ -143,6 +148,17 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <!-- Modal Success-->
+    <div class="modal fade" id="modal-news" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="alert alert-success" role="alert">
+          Berita berhasil ditambahkan. Klik <a href="dashboard" class="alert-link"> kembali</a>.
+        </div>
+
+      </div>
+    </div>
 @endsection
 
 @section('script')
@@ -161,17 +177,37 @@
   <script src="dist/js/demo.js"></script>
   <!-- CK Editor -->
   <script src="bower_components/ckeditor/ckeditor.js"></script>
+  <!-- Bootstrap WYSIHTML5 -->
+  <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+  <!-- page script -->
+  <script src="js/ajax.js"></script>
   <script>
     $(function () {
       // Replace the <textarea id="editor1"> with a CKEditor
       // instance, using default configuration.
-      CKEDITOR.replace('editor1')
+      CKEDITOR.replace('editor1');
       //bootstrap WYSIHTML5 - text editor
-      $('.textarea').wysihtml5()
+      $('.textarea').wysihtml5();
+      // CKEDITOR.on("instanceCreated", function(event) {
+      //   event.editor.on("change", function () {
+      //     $("#trackingDiv").html(event.editor.getData());
+      //   });
+      // });
     })
   </script>
-  <!-- page script -->
-  <script src="js/ajax.js"></script>
+  <script>
+    $(function () {
+      $('#example1').DataTable()
+      $('#example2').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
+      })
+    })
+  </script>
 
   <script>
   var currentURL = window.location.pathname.toString();

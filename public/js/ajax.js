@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 	$('#login-form').on('submit', function (e) {
 		e.preventDefault();
 		$.ajax({
@@ -50,12 +51,19 @@ $(document).ready(function() {
 
 	$('#add-news').on('submit', function(e) {
 		e.preventDefault();
+		var data = CKEDITOR.instances.editor1.getData();
+		console.log(data);
+		$('#content-hidden')[0].innerHTML = data;
 		$.ajax({
 			type:	'post',
 			url: 'addNews',
 			data: $('#add-news').serialize(),
 			success: function(data, status) {
-				console.log(data.message);
+
+				$('#modal-open')[0].className = 'hold-transition skin-blue sidebar-mini modal-open';
+				$('#modal-news')[0].className = 'modal fade in';
+				$("#modal-news").css({ 'display': "block"});
+				$( "#modal-open" ).append( '<div class="modal-backdrop fade in"></div>');
 			}
 		});
 	});
