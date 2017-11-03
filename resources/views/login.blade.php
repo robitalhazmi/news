@@ -1,129 +1,114 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>Masuk - News</title>
+@extends('layouts.layout_landing')
+
+@section('title')
+	Masuk | Portal Berita Universitas Airlangga
+@endsection
+
+@section('link')
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Trendy Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Custom Theme files -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<!-- //js -->
-<link href='//fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<meta name="keywords" content="Express News Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript">
+	addEventListener("load", function() {
+		setTimeout(hideURLbar, 0);
+	}, false);
 
-<style media="screen">
-	#error-login {
-		font-style: normal;
-		color: #fff;
-		display: block;
+	function hideURLbar() {
+		window.scrollTo(0, 1);
 	}
-</style>
-</head>
+</script>
+<!-- for bootstrap working -->
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+<!-- web-fonts -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+<script src="js/responsiveslides.min.js"></script>
+<script>
+	$(function() {
+		$("#slider").responsiveSlides({
+			auto: true,
+			nav: true,
+			speed: 500,
+			namespace: "callbacks",
+			pager: true,
+		});
+	});
+</script>
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<!--/script-->
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event) {
+			event.preventDefault();
+			$('html,body').animate({
+				scrollTop: $(this.hash).offset().top
+			}, 900);
+		});
+	});
+</script>
+@endsection
 
-<body>
-<!-- banner -->
-	<div class="banner1">
-		<div class="banner-info1">
-			<div class="container">
-				<nav class="navbar navbar-default">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					  </button>
-						<div class="logo">
-							<a class="navbar-brand" href="/"><span>N</span> News</a>
-						</div>
-					</div>
+@section('content')
+<!-- content-section-starts-here -->
+<div class="main-body">
+	<div class="wrap">
+		<ol class="breadcrumb">
+			<li><a href="index.html">Beranda</a></li>
+			<li class="active">Masuk</li>
+		</ol>
 
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav cl-effect-18" id="cl-effect-18">
-							<li><a href="/">Beranda</a></li>
-							<li><a href="#">Nav</a></li>
-							<li><a href="#">Nav</a></li>
-							<li><a href="#">Nav</a></li>
-
-							<li><a href="#">Nav</a></li>
-							@guest
-								<li class="act"><a href="login" class="effect1 active">Masuk</a></li>
-							@endguest
-							@auth
-								<li role="presentation" class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-									  Hai! {{ Auth::user()->username }} <span class="caret"></span>
-									</a>
-									<ul class="dropdown-menu">
-									  <li><a href="admin">Dashboard</a></li>
-									  <li><a href="logout">Keluar</a></li>
-
-									</ul>
-								</li>
-							@endauth
-						</ul>
-					</div><!-- /.navbar-collapse -->
-
-				</nav>
-			</div>
-		</div>
-	</div>
-<!-- //banner -->
-<!-- footer -->
-	<div class="footer">
-		<div class="container">
-			<div class="footer-grids wthree-agile">
-				<div class="col-md-4 footer-grid-left">
-          {{-- ??? --}}
-				</div>
-				<div class="col-md-4 footer-grid-left">
-					<h3>masuk</h3>
-					<form id="login-form">
+		<!--contact-section-starts-->
+		<div class="contact-section">
+			<div class="contact_grid">
+				<div class="col-md-8 contact-top">
+					<h3>Masuk</h3>
+					<p id="status" class="contact_msg hide"></p>
+					<form id="login-form" method="post">
 						{{ csrf_field() }}
-						<input type="text" name="username" placeholder="Masukkan nama pengguna anda" required="" style="text-transform: none;">
-            <input type="password" name="password" required="" placeholder="Masukkan kata sandi anda" style="text-transform: none;">
-						<span id="status" class="status hide"><i id="error-login">Ok</i></span>
-						<input type="submit" value="Kirim" style="margin-top: 19.2px;">
+						<div class="to">
+							<input type="text" class="text" name="username" placeholder="Nama Pengguna">
+							<input type="password" class="text" name="password" placeholder="Kata Sandi" style="margin-left:20px; margin-right: 20px;">
+						</div>
+						<div class="form-submit1">
+							<input name="submit" type="submit" id="submit" value="Masuk"><br>
+						</div>
+						<div class="clearfix"> </div>
 					</form>
 				</div>
-				<div class="col-md-4 footer-grid-left">
-					{{-- ??? --}}
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="footer-bottom">
-				<div class="footer-bottom-left-whtree-agileinfo">
-					<p>&copy 2017 Trendy Blog. All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts.</a></p>
-				</div>
-				<div class="footer-bottom-right-whtree-agileinfo">
-					<ul>
-						<li><a href="#" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a></li>
-						<li><a href="#" class="icon-button google"><i class="icon-google"></i><span></span></a></li>
-						<li><a href="#" class="icon-button v"><i class="icon-v"></i><span></span></a></li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
+				<div class="clearfix"></div>
 			</div>
 		</div>
-	</div>
-<!-- //footer -->
-<!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
-<!-- //for bootstrap working -->
-<script src="js/jquery-3.2.1.js"></script>
-<script src="js/ajax.js"></script>
 
-</body>
-</html>
+		<!--contact-section-ends-->
+	</div>
+</div>
+<!-- content-section-ends-here -->
+@endsection
+
+@section('script')
+<script type="text/javascript">
+	$(document).ready(function() {
+		/*
+		var defaults = {
+		containerID: 'toTop', // fading element id
+		containerHoverID: 'toTopHover', // fading element hover id
+		scrollSpeed: 1200,
+		easingType: 'linear'
+		};
+		*/
+		$().UItoTop({
+			easingType: 'easeOutQuart'
+		});
+	});
+</script>
+<script src="/js/ajax.js"></script>
+@endsection

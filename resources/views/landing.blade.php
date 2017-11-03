@@ -1,933 +1,693 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>News</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Trendy Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Custom Theme files -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<!-- //js -->
-<link href='//fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-</head>
+@extends('layouts.layout_landing')
 
-<body>
-<!-- banner -->
-	<div class="banner">
-		<div class="banner-info">
-			<div class="container">
-				<nav class="navbar navbar-default">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					  </button>
-						<div class="logo">
-							<a class="navbar-brand" href="/"><span>N</span> News</a>
-						</div>
-					</div>
+@section('title')
+	Portal Berita Universitas Airlangga
+@endsection
 
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav cl-effect-18" id="cl-effect-18">
-							<li class="act"><a href="/" class="effect1 active">Beranda</a></li>
-							<li><a href="#">Nav</a></li>
-							<li><a href="#">Nav</a></li>
-							<li><a href="#">Nav</a></li>
+@section('link')
+	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<!-- Custom Theme files -->
+	<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- Custom Theme files -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	{{-- <meta name="keywords" content="Express News Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" /> --}}
+	<!-- web-fonts -->
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="/js/jquery.min.js"></script>
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
 
-							<li><a href="#">Nav</a></li>
-							@guest
-								<li><a href="login">Masuk</a></li>
-							@endguest
-							@auth
-								<li role="presentation" class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-									  Hai! {{ Auth::user()->username }} <span class="caret"></span>
-									</a>
-									<ul class="dropdown-menu">
-									  <li><a href="admin">Dashboard</a></li>
-									  <li><a href="logout">Keluar</a></li>
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- for bootstrap working -->
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	<!-- //for bootstrap working -->
+	<script src="/js/responsiveslides.min.js"></script>
+	<script>
+		$(function() {
+			$("#slider").responsiveSlides({
+				auto: true,
+				nav: true,
+				speed: 500,
+				namespace: "callbacks",
+				pager: true,
+			});
+		});
+	</script>
+	<script type="text/javascript" src="/js/move-top.js"></script>
+	<script type="text/javascript" src="/js/easing.js"></script>
+	<!--/script-->
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 900);
+			});
+		});
+	</script>
+@endsection
 
-									</ul>
-								</li>
-							@endauth
-						</ul>
-					</div><!-- /.navbar-collapse -->
-
-				</nav>
-				<!--banner-Slider-->
-					<script src="js/responsiveslides.min.js"></script>
-						<script>
-							// You can also use "$(window).load(function() {"
-							$(function () {
-							  // Slideshow 4
-							  $("#slider3").responsiveSlides({
-							auto: true,
-							pager: true,
-							nav:true,
-							speed: 500,
-							namespace: "callbacks",
-							before: function () {
-							  $('.events').append("<li>before event fired.</li>");
-							},
-							after: function () {
-							  $('.events').append("<li>after event fired.</li>");
-							}
-							  });
-
-							});
-						</script>
-					<div  id="top" class="callbacks_container">
-						<ul class="rslides" id="slider3">
-							<li>
-								<div class="banner-info-slider">
-									<ul>
-										<li><a href="single.html">Blogger</a></li>
-										<li>30 Aug 2016</li>
-									</ul>
-									<h3>Stress Full Business Man</h3>
-									<p>Lorem ipsum dolor
-									symptoms can include.<span>By <i>ullamcoman</i> and <i>Micheal smithjos.</i></span></p>
-									<div class="more">
-										<a href="single.html" class="type-1">
-											<span> Read More </span>
-											<span> Read More </span>
-										</a>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="banner-info-slider">
-									<ul>
-										<li><a href="single.html">Business</a></li>
-										<li>30 Aug 2016</li>
-									</ul>
-								<h3>New Trendy Fashions Looks</h3>
-									<p>Lorem ipsum dolor sit amet adipiscing elit.
-										<span>By <i>laborisman</i> and <i>Adom smithjos.</i></span></p>
-									<div class="more">
-										<a href="single.html" class="type-1">
-											<span> Read More </span>
-											<span> Read More </span>
-										</a>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="banner-info-slider">
-									<ul>
-										<li><a href="single.html">sports</a></li>
-										<li>30 Aug 2016</li>
-									</ul>
-								   <h3>Portfolio of Agency</h3>
-									<p>Lorem ipsum dolor sit amet adipiscing elit.
-										<span>By <i>ullamcoman</i> and <i>Micheal smithjos.</i></span></p>
-									<div class="more">
-										<a href="single.html" class="type-1">
-											<span> Read More </span>
-											<span> Read More </span>
-										</a>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="banner-info-slider">
-									<ul>
-										<li><a href="single.html">general</a></li>
-										<li>30 Aug 2016</li>
-									</ul>
-										<h3>New Trendy Fashions Looks</h3>
-									<p>Lorem ipsum dolor sit amet adipiscing elit
-										<span>By <i>ullamcoman</i> and <i>Micheal smithjos.</i></span></p>
-									<div class="more">
-										<a href="single.html" class="type-1">
-											<span> Read More </span>
-											<span> Read More </span>
-										</a>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="banner-info-slider">
-									<ul>
-										<li><a href="single.html">Blogger</a></li>
-										<li>30 Aug 2016</li>
-									</ul>
-										<h3>Stress Full Business Man</h3>
-									<p>Lorem ipsum dolor sit amet adipiscing elit.
-									<span>By <i>ullamcoman</i> and <i>Micheal smithjos.</i></span></p>
-									<div class="more">
-										<a href="single.html" class="type-1">
-											<span> Read More </span>
-											<span> Read More </span>
-										</a>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
+@section('content')
+	<div class="wrap">
+		<div class="move-text">
+			<div class="breaking_news">
+				<h2>Breaking News</h2>
 			</div>
+			<div class="marquee">
+				<div class="marquee1"><a class="breaking" href="/single.html">>>The standard chunk of Lorem Ipsum used since the 1500s is reproduced..</a></div>
+				<div class="marquee2"><a class="breaking" href="/single.html">>>At vero eos et accusamus et iusto qui blanditiis praesentium voluptatum deleniti atque..</a></div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+			<script type="text/javascript" src="/js/jquery.marquee.min.js"></script>
+			<script>
+				$('.marquee').marquee({
+					pauseOnHover: true
+				});
+				//@ sourceURL=pen.js
+			</script>
 		</div>
 	</div>
-<!-- banner -->
-<!-- banner-bottom -->
-	<div class="banner-bottom">
-		<div class="container">
-			<div class="banner-bottom-grids">
-				<div class="col-md-3 banner-bottom-grid-left">
-					<div class="br-bm-gd-lt">
-						<div class="overlay">
-							<div class="arrow-left"></div>
-							<div class="rectangle"></div>
+	<!-- content-section-starts-here -->
+	<div class="main-body">
+		<div class="wrap">
+			<div class="col-md-8 content-left">
+				<div class="slider">
+					<div class="callbacks_wrap">
+						<ul class="rslides" id="slider">
+							<li>
+								<img src="/images/3.jpg" alt="">
+								<div class="caption">
+									<a href="/single.html">Lorem Ipsum is simply dummy text of the printing and typesetting industry</a>
+								</div>
+							</li>
+							<li>
+								<img src="/images/2.jpg" alt="">
+								<div class="caption">
+									<a href="/single.html">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</a>
+								</div>
+							</li>
+							<li>
+								<img src="/images/1.jpg" alt="">
+								<div class="caption">
+									<a href="/single.html">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="articles">
+					<header>
+						<h3 class="title-head">All around the world</h3>
+					</header>
+					<div class="article">
+						<div class="article-left">
+							<a href="/single.html"><img src="/images/article1.jpg"></a>
 						</div>
-						<div class="health-pos">
-							<div class="health">
-								<ul>
-									<li><a href="#">Health</a></li>
-									<li>30 Aug 2016</li>
-								</ul>
+						<div class="article-right">
+							<div class="article-title">
+								<p>On Feb 25, 2015 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>104 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-thumbs-up"></span>52</a></p>
+								<a class="title" href="/single.html"> The section of the mass media industry that focuses on presenting</a>
 							</div>
-							<h3>But I must explain to you how all this mistaken idea.</h3>
-							<div class="dummy">
-								<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut maiores alias.</p>
+							<div class="article-text">
+								<p>The standard chunk of Lorem Ipsum used since the 1500s. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" exact original.....</p>
+								<a href="/single.html"><img src="/images/more.png" alt="" /></a>
+								<div class="clearfix"></div>
 							</div>
-							<div class="com-heart">
-								<ul>
-									<li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>120 Comments</a></li>
-									<li><a href="#"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>12,536 Likes</a></li>
-								</ul>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="article">
+						<div class="article-left">
+							<iframe width="100%" src="/https://www.youtube.com/embed/mbDg4OG7z4Y" frameborder="0" allowfullscreen></iframe>
+						</div>
+						<div class="article-right">
+							<div class="article-title">
+								<p>On Apr 11, 2015 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>2 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>54 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-thumbs-up"></span>18</a></p>
+								<a class="title" href="/single.html">Contrary to popular belief, Lorem Ipsum is not simply random</a>
+							</div>
+							<div class="article-text">
+								<p>It is a long established fact that a reader will be distracted by the readable.....</p>
+								<a href="/single.html"><img src="/images/more.png" alt="" /></a>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="article">
+						<div class="article-left">
+							<a href="/single.html"><img src="/images/article3.jpg"></a>
+						</div>
+						<div class="article-right">
+							<div class="article-title">
+								<p>On Jun 21, 2015 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>181 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-thumbs-up"></span>89</a></p>
+								<a class="title" href="/single.html">There are many variations that focuses on presenting</a>
+							</div>
+							<div class="article-text">
+								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.....</p>
+								<a href="/single.html"><img src="/images/more.png" alt="" /></a>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="article">
+						<div class="article-left">
+							<a href="/single.html"><img src="/images/article4.jpg"></a>
+						</div>
+						<div class="article-right">
+							<div class="article-title">
+								<p>On Jan 17, 2015 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>1 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>144 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-thumbs-up"></span>74</a></p>
+								<a class="title" href="/single.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+							</div>
+							<div class="article-text">
+								<p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born.....</p>
+								<a href="/single.html"><img src="/images/more.png" alt="" /></a>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="article">
+						<div class="article-left">
+							<iframe width="100%" src="/https://www.youtube.com/embed/GxXxvJYUpxk" frameborder="0" allowfullscreen></iframe>
+						</div>
+						<div class="article-right">
+							<div class="article-title">
+								<p>On Mar 14, 2015 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>250 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-thumbs-up"></span>68</a></p>
+								<a class="title" href="/single.html">On the other hand, we denounce with righteous indignation</a>
+							</div>
+							<div class="article-text">
+								<p>It is a long established fact that a reader will be distracted by the readable.....</p>
+								<a href="/single.html"><img src="/images/more.png" alt="" /></a>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="life-style">
+					<header>
+						<h3 class="title-head">Life Style</h3>
+					</header>
+					<div class="life-style-grids">
+						<div class="life-style-left-grid">
+							<a href="/single.html"><img src="/images/l1.jpg" alt="" /></a>
+							<a class="title" href="/single.html">It is a long established fact that a reader will be distracted.</a>
+						</div>
+						<div class="life-style-right-grid">
+							<a href="/single.html"><img src="/images/l2.jpg" alt="" /></a>
+							<a class="title" href="/single.html">There are many variations of passages of Lorem Ipsum available.</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="life-style-grids">
+						<div class="life-style-left-grid">
+							<a href="/single.html"><img src="/images/l3.jpg" alt="" /></a>
+							<a class="title" href="/single.html">Contrary to popular belief, Lorem Ipsum is not simply random text.</a>
+						</div>
+						<div class="life-style-right-grid">
+							<a href="/single.html"><img src="/images/l4.jpg" alt="" /></a>
+							<a class="title" href="/single.html">Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="sports-top">
+					<div class="s-grid-left">
+						<div class="cricket">
+							<header>
+								<h3 class="title-head">Business</h3>
+							</header>
+							<div class="c-sports-main">
+								<div class="c-image">
+									<a href="/single.html"><img src="/images/bus1.jpg" alt="" /></a>
+								</div>
+								<div class="c-text">
+									<h6>Lorem Ipsum</h6>
+									<a class="power" href="/single.html">It is a long established fact that a reader</a>
+									<p class="date">On Feb 25, 2015</p>
+									<a class="reu" href="/single.html"><img src="/images/more.png" alt="" /></a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="s-grid-small">
+								<div class="sc-image">
+									<a href="/single.html"><img src="/images/bus2.jpg" alt="" /></a>
+								</div>
+								<div class="sc-text">
+									<h6>Lorem Ipsum</h6>
+									<a class="power" href="/single.html">It is a long established fact that a reader</a>
+									<p class="date">On Mar 21, 2015</p>
+									<a class="reu" href="/single.html"><img src="/images/more.png" alt="" /></a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="s-grid-small">
+								<div class="sc-image">
+									<a href="/single.html"><img src="/images/bus3.jpg" alt="" /></a>
+								</div>
+								<div class="sc-text">
+									<h6>Lorem Ipsum</h6>
+									<a class="power" href="/single.html">It is a long established fact that a reader</a>
+									<p class="date">On Jan 25, 2015</p>
+									<a class="reu" href="/single.html"><img src="/images/more.png" alt="" /></a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="s-grid-small">
+								<div class="sc-image">
+									<a href="/single.html"><img src="/images/bus4.jpg" alt="" /></a>
+								</div>
+								<div class="sc-text">
+									<h6>Lorem Ipsum</h6>
+									<a class="power" href="/single.html">It is a long established fact that a reader</a>
+									<p class="date">On Jul 19, 2015</p>
+									<a class="reu" href="/single.html"><img src="/images/more.png" alt="" /></a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-3 banner-bottom-grid-left">
-					<div class="br-bm-gd-lt br-bm-gd-lt1">
-						<div class="overlay">
-							<div class="arrow-left"></div>
-							<div class="rectangle"></div>
-						</div>
-						<div class="health-pos">
-							<div class="health">
-								<ul>
-									<li><a href="#" class="sport">Sports</a></li>
-									<li>30 Aug 2016</li>
-								</ul>
+					<div class="s-grid-right">
+						<div class="cricket">
+							<header>
+								<h3 class="title-popular">Technology</h3>
+							</header>
+							<div class="c-sports-main">
+								<div class="c-image">
+									<a href="/single.html"><img src="/images/tec1.jpg" alt="" /></a>
+								</div>
+								<div class="c-text">
+									<h6>Lorem Ipsum</h6>
+									<a class="power" href="/single.html">It is a long established fact that a reader</a>
+									<p class="date">On Apr 22, 2015</p>
+									<a class="reu" href="/single.html"><img src="/images/more.png" alt="" /></a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
 							</div>
-							<h3>But I must explain to you how all this mistaken idea.</h3>
-							<div class="dummy">
-								<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut maiores alias.</p>
+							<div class="s-grid-small">
+								<div class="sc-image">
+									<a href="/single.html"><img src="/images/tec2.jpg" alt="" /></a>
+								</div>
+								<div class="sc-text">
+									<h6>Lorem Ipsum</h6>
+									<a class="power" href="/single.html">It is a long established fact that a reader</a>
+									<p class="date">On Jan 19, 2015</p>
+									<a class="reu" href="/single.html"><img src="/images/more.png" alt="" /></a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
 							</div>
-							<div class="com-heart">
-								<ul>
-									<li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>200 Comments</a></li>
-									<li><a href="#"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>13,536 Likes</a></li>
-								</ul>
+							<div class="s-grid-small">
+								<div class="sc-image">
+									<a href="/single.html"><img src="/images/tec3.jpg" alt="" /></a>
+								</div>
+								<div class="sc-text">
+									<h6>Lorem Ipsum</h6>
+									<a class="power" href="/single.html">It is a long established fact that a reader</a>
+									<p class="date">On Jun 25, 2015</p>
+									<a class="reu" href="/single.html"><img src="/images/more.png" alt="" /></a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 banner-bottom-grid-left">
-					<div class="br-bm-gd-lt br-bm-gd-lt2">
-						<div class="overlay">
-							<div class="arrow-left"></div>
-							<div class="rectangle"></div>
-						</div>
-						<div class="health-pos">
-							<div class="health">
-								<ul>
-									<li><a href="#" class="plane">Economic</a></li>
-									<li>30 Aug 2016</li>
-								</ul>
-							</div>
-							<h3>But I must explain to you how all this mistaken idea.</h3>
-							<div class="dummy">
-								<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut maiores alias.</p>
-							</div>
-							<div class="com-heart">
-								<ul>
-									<li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>180 Comments</a></li>
-									<li><a href="#"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>18,536 Likes</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 banner-bottom-grid-left">
-					<div class="br-bm-gd-lt br-bm-gd-lt3">
-						<div class="overlay">
-							<div class="arrow-left"></div>
-							<div class="rectangle"></div>
-						</div>
-						<div class="health-pos">
-							<div class="health">
-								<ul>
-									<li><a href="#" class="general">General</a></li>
-									<li>30 Aug 2016</li>
-								</ul>
-							</div>
-							<h3>But I must explain to you how all this mistaken idea.</h3>
-							<div class="dummy">
-								<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut maiores alias.</p>
-							</div>
-							<div class="com-heart">
-								<ul>
-									<li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>150 Comments</a></li>
-									<li><a href="#"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>15,536 Likes</a></li>
-								</ul>
+							<div class="s-grid-small">
+								<div class="sc-image">
+									<a href="/single.html"><img src="/images/tec4.jpg" alt="" /></a>
+								</div>
+								<div class="sc-text">
+									<h6>Lorem Ipsum</h6>
+									<a class="power" href="/single.html">It is a long established fact that a reader</a>
+									<p class="date">On Jul 19, 2015</p>
+									<a class="reu" href="/single.html"><img src="/images/more.png" alt="" /></a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="banner-bottom-grids">
-				<div class="col-md-3 banner-bottom-grid-left">
-					<div class="br-bm-gd-lt br-bm-gd-lt4">
-						<div class="overlay">
-							<div class="arrow-left"></div>
-							<div class="rectangle"></div>
-						</div>
-						<div class="health-pos">
-							<div class="health">
-								<ul>
-									<li><a href="#" class="pol">Blogger</a></li>
-									<li>30 Aug 2016</li>
-								</ul>
-							</div>
-							<h3>But I must explain to you how all this mistaken idea.</h3>
-							<div class="dummy">
-								<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut maiores alias.</p>
-							</div>
-							<div class="com-heart">
-								<ul>
-									<li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>450 Comments</a></li>
-									<li><a href="#"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>12,965 Likes</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 banner-bottom-grid-left">
-					<div class="br-bm-gd-lt br-bm-gd-lt5">
-						<div class="overlay">
-							<div class="arrow-left"></div>
-							<div class="rectangle"></div>
-						</div>
-						<div class="health-pos">
-							<div class="health">
-								<ul>
-									<li><a href="#" class="world">World</a></li>
-									<li>30 Aug 2016</li>
-								</ul>
-							</div>
-							<h3>But I must explain to you how all this mistaken idea.</h3>
-							<div class="dummy">
-								<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut maiores alias.</p>
-							</div>
-							<div class="com-heart">
-								<ul>
-									<li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>212 Comments</a></li>
-									<li><a href="#"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>18,536 Likes</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 banner-bottom-grid-left">
-					<div class="br-bm-gd-lt br-bm-gd-lt6">
-						<div class="overlay">
-							<div class="arrow-left"></div>
-							<div class="rectangle"></div>
-						</div>
-						<div class="health-pos">
-							<div class="health">
-								<ul>
-									<li><a href="#" class="national">international</a></li>
-									<li>30 Aug 2016</li>
-								</ul>
-							</div>
-							<h3>But I must explain to you how all this mistaken idea.</h3>
-							<div class="dummy">
-								<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut maiores alias.</p>
-							</div>
-							<div class="com-heart">
-								<ul>
-									<li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>261 Comments</a></li>
-									<li><a href="#"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>15,536 Likes</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 banner-bottom-grid-left">
-					<div class="br-bm-gd-lt br-bm-gd-lt7">
-						<div class="overlay">
-							<div class="arrow-left"></div>
-							<div class="rectangle"></div>
-						</div>
-						<div class="health-pos">
-							<div class="health">
-								<ul>
-									<li><a href="#" class="business">business</a></li>
-									<li>30 Aug 2016</li>
-								</ul>
-							</div>
-							<h3>But I must explain to you how all this mistaken idea.</h3>
-							<div class="dummy">
-								<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut maiores alias.</p>
-							</div>
-							<div class="com-heart">
-								<ul>
-									<li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>297 Comments</a></li>
-									<li><a href="#"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>9,996 Likes</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="move-text">
-				<div class="breaking_news">
-					<h2>Breaking News</h2>
-				</div>
-				<div class="marquee">
-					<div class="marquee1"><a class="breaking" href="single.html">A 5-year-old boy who recently returned to the U.S from Ebola-stricken West Africa is under observation after experiencing a fever.</a></div>
-					<div class="marquee2"><a class="breaking" href="single.html">The surprisingly successful president of the Philippines and peacemaking in the Philippines: Shaking it all up.</a></div>
 					<div class="clearfix"></div>
 				</div>
+			</div>
+			<div class="col-md-4 side-bar">
+				<div class="first_half">
+					<div class="newsletter">
+						<h1 class="side-title-head">Newsletter</h1>
+						<p class="sign">Sign up to receive our free newsletters!</p>
+						<form>
+							<input type="text" class="text" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}">
+							<input type="submit" value="submit">
+						</form>
+					</div>
+					<div class="list_vertical">
+						<section class="accordation_menu">
+							<div>
+								<input id="label-1" name="lida" type="radio" checked/>
+								<label for="label-1" id="item1"><i class="ferme"> </i>Popular Posts<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
+								<div class="content" id="a1">
+									<div class="scrollbar" id="style-2">
+										<div class="force-overflow">
+											<div class="popular-post-grids">
+												<div class="popular-post-grid">
+													<div class="post-img">
+														<a href="/single.html"><img src="/images/bus2.jpg" alt="" /></a>
+													</div>
+													<div class="post-text">
+														<a class="pp-title" href="/single.html"> The section of the mass media industry</a>
+														<p>On Feb 25 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>3 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+												<div class="popular-post-grid">
+													<div class="post-img">
+														<a href="/single.html"><img src="/images/bus1.jpg" alt="" /></a>
+													</div>
+													<div class="post-text">
+														<a class="pp-title" href="/single.html"> Lorem Ipsum is simply dummy text printing</a>
+														<p>On Apr 14 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>2 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+												<div class="popular-post-grid">
+													<div class="post-img">
+														<a href="/single.html"><img src="/images/bus3.jpg" alt="" /></a>
+													</div>
+													<div class="post-text">
+														<a class="pp-title" href="/single.html">There are many variations of Lorem</a>
+														<p>On Jun 25 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+												<div class="popular-post-grid">
+													<div class="post-img">
+														<a href="/single.html"><img src="/images/bus4.jpg" alt="" /></a>
+													</div>
+													<div class="post-text">
+														<a class="pp-title" href="/single.html">Sed ut perspiciatis unde omnis iste natus</a>
+														<p>On Jan 25 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>1 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div>
+								<input id="label-2" name="lida" type="radio" />
+								<label for="label-2" id="item2"><i class="icon-leaf" id="i2"></i>Recent Posts<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
+								<div class="content" id="a2">
+									<div class="scrollbar" id="style-2">
+										<div class="force-overflow">
+											<div class="popular-post-grids">
+												<div class="popular-post-grid">
+													<div class="post-img">
+														<a href="/single.html"><img src="/images/tec2.jpg" alt="" /></a>
+													</div>
+													<div class="post-text">
+														<a class="pp-title" href="/single.html"> The section of the mass media industry</a>
+														<p>On Feb 25 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>3 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+												<div class="popular-post-grid">
+													<div class="post-img">
+														<a href="/single.html"><img src="/images/tec1.jpg" alt="" /></a>
+													</div>
+													<div class="post-text">
+														<a class="pp-title" href="/single.html"> Lorem Ipsum is simply dummy text printing</a>
+														<p>On Apr 14 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>2 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+												<div class="popular-post-grid">
+													<div class="post-img">
+														<a href="/single.html"><img src="/images/tec3.jpg" alt="" /></a>
+													</div>
+													<div class="post-text">
+														<a class="pp-title" href="/single.html">There are many variations of Lorem</a>
+														<p>On Jun 25 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+												<div class="popular-post-grid">
+													<div class="post-img">
+														<a href="/single.html"><img src="/images/tec4.jpg" alt="" /></a>
+													</div>
+													<div class="post-text">
+														<a class="pp-title" href="/single.html">Sed ut perspiciatis unde omnis iste natus</a>
+														<p>On Jan 25 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>1 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>56 </a></p>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div>
+								<input id="label-3" name="lida" type="radio" />
+								<label for="label-3" id="item3"><i class="icon-trophy" id="i3"></i>Comments<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
+								<div class="content" id="a3">
+									<div class="scrollbar" id="style-2">
+										<div class="force-overflow">
+											<div class="response">
+												<div class="media response-info">
+													<div class="media-left response-text-left">
+														<a href="/#">
+									<img class="media-object" src="/images/icon1.png" alt="" />
+								</a>
+														<h5><a href="/#">Username</a></h5>
+													</div>
+													<div class="media-body response-text-right">
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+														<ul>
+															<li>MARCH 21, 2015</li>
+															<li><a href="/single.html">Reply</a></li>
+														</ul>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+												<div class="media response-info">
+													<div class="media-left response-text-left">
+														<a href="/#">
+									<img class="media-object" src="/images/icon1.png" alt="" />
+								</a>
+														<h5><a href="/#">Username</a></h5>
+													</div>
+													<div class="media-body response-text-right">
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+														<ul>
+															<li>MARCH 26, 2015</li>
+															<li><a href="/single.html">Reply</a></li>
+														</ul>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+												<div class="media response-info">
+													<div class="media-left response-text-left">
+														<a href="/#">
+									<img class="media-object" src="/images/icon1.png" alt="" />
+								</a>
+														<h5><a href="/#">Username</a></h5>
+													</div>
+													<div class="media-body response-text-right">
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+														<ul>
+															<li>MAY 25, 2015</li>
+															<li><a href="/single.html">Reply</a></li>
+														</ul>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+												<div class="media response-info">
+													<div class="media-left response-text-left">
+														<a href="/#">
+									<img class="media-object" src="/images/icon1.png" alt="" />
+								</a>
+														<h5><a href="/#">Username</a></h5>
+													</div>
+													<div class="media-body response-text-right">
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+														<ul>
+															<li>FEB 13, 2015</li>
+															<li><a href="/single.html">Reply</a></li>
+														</ul>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+												<div class="media response-info">
+													<div class="media-left response-text-left">
+														<a href="/#">
+									<img class="media-object" src="/images/icon1.png" alt="" />
+								</a>
+														<h5><a href="/#">Username</a></h5>
+													</div>
+													<div class="media-body response-text-right">
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+														<ul>
+															<li>JAN 28, 2015</li>
+															<li><a href="/single.html">Reply</a></li>
+														</ul>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+												<div class="media response-info">
+													<div class="media-left response-text-left">
+														<a href="/#">
+									<img class="media-object" src="/images/icon1.png" alt="" />
+								</a>
+														<h5><a href="/#">Username</a></h5>
+													</div>
+													<div class="media-body response-text-right">
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+														<ul>
+															<li>APR 18, 2015</li>
+															<li><a href="/single.html">Reply</a></li>
+														</ul>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+												<div class="media response-info">
+													<div class="media-left response-text-left">
+														<a href="/#">
+									<img class="media-object" src="/images/icon1.png" alt="" />
+								</a>
+														<h5><a href="/#">Username</a></h5>
+													</div>
+													<div class="media-body response-text-right">
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+														<ul>
+															<li>DEC 25, 2014</li>
+															<li><a href="/single.html">Reply</a></li>
+														</ul>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+					<div class="side-bar-articles">
+						<div class="side-bar-article">
+							<a href="/single.html"><img src="/images/sai.jpg" alt="" /></a>
+							<div class="side-bar-article-title">
+								<a href="/single.html">Contrary to popular belief, Lorem Ipsum is not simply random text</a>
+							</div>
+						</div>
+						<div class="side-bar-article">
+							<a href="/single.html"><img src="/images/sai2.jpg" alt="" /></a>
+							<div class="side-bar-article-title">
+								<a href="/single.html">There are many variations of passages of Lorem</a>
+							</div>
+						</div>
+						<div class="side-bar-article">
+							<a href="/single.html"><img src="/images/sai3.jpg" alt="" /></a>
+							<div class="side-bar-article-title">
+								<a href="/single.html">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="secound_half">
+					<div class="tags">
+						<header>
+							<h3 class="title-head">Tags</h3>
+						</header>
+						<p>
+							<a class="tag1" href="/single.html">At vero eos</a>
+							<a class="tag2" href="/single.html">doloremque</a>
+							<a class="tag3" href="/single.html">On the other</a>
+							<a class="tag4" href="/single.html">pain was</a>
+							<a class="tag5" href="/single.html">rationally encounter</a>
+							<a class="tag6" href="/single.html">praesentium voluptatum</a>
+							<a class="tag7" href="/single.html">est, omnis</a>
+							<a class="tag8" href="/single.html">who are so beguiled</a>
+							<a class="tag9" href="/single.html">when nothing</a>
+							<a class="tag10" href="/single.html">owing to the</a>
+							<a class="tag11" href="/single.html">pains to avoid</a>
+							<a class="tag12" href="/single.html">tempora incidunt</a>
+							<a class="tag13" href="/single.html">pursues or desires</a>
+							<a class="tag14" href="/single.html">Bonorum et</a>
+							<a class="tag15" href="/single.html">written by Cicero</a>
+							<a class="tag16" href="/single.html">Ipsum passage</a>
+							<a class="tag17" href="/single.html">exercitationem ullam</a>
+							<a class="tag18" href="/single.html">mistaken idea</a>
+							<a class="tag19" href="/single.html">ducimus qui</a>
+							<a class="tag20" href="/single.html">holds in these</a>
+						</p>
+					</div>
+					<div class="popular-news">
+						<header>
+							<h3 class="title-popular">popular News</h3>
+						</header>
+						<div class="popular-grids">
+							<div class="popular-grid">
+								<a href="/single.html"><img src="/images/popular-4.jpg" alt="" /></a>
+								<a class="title" href="/single.html">It is a long established fact that a reader will be distracted</a>
+								<p>On Aug 31, 2015 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>250 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-thumbs-up"></span>68</a></p>
+							</div>
+							<div class="popular-grid">
+								<a href="/single.html"><img src="/images/popular-1.jpg" alt="" /></a>
+								<a class="title" href="/single.html">It is a long established fact that a reader will be distracted</a>
+								<p>On Mar 14, 2015 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>250 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-thumbs-up"></span>68</a></p>
+							</div>
+							<div class="popular-grid">
+								<iframe width="100%" src="/https://www.youtube.com/embed/LGMn_yi_62k" frameborder="0" allowfullscreen></iframe>
+								<a class="title" href="/single.html">Aishwarya Rai Bachchan's Latest SHOCKING News For Ex Salman Khan</a>
+								<p>On Mar 14, 2015 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>250 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-thumbs-up"></span>68</a></p>
+							</div>
+							<div class="popular-grid">
+								<a href="/single.html"><img src="/images/popular-3.jpg" alt="" /></a>
+								<a class="title" href="/single.html">It is a long established fact that a reader will be distracted</a>
+								<p>On Mar 14, 2015 <a class="span_link" href="/#"><span class="glyphicon glyphicon-comment"></span>0 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-eye-open"></span>250 </a><a class="span_link" href="/#"><span class="glyphicon glyphicon-thumbs-up"></span>68</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="clearfix"></div>
-				<script type="text/javascript" src="js/jquery.marquee.js"></script>
-				<script>
-				  $('.marquee').marquee({ pauseOnHover: true });
-				  //@ sourceURL=pen.js
-				</script>
 			</div>
-			<!-- video-grids -->
-				<div class="video-grids">
-					<div class="col-md-8 video-grids-left">
-
-
-					</div>
-					<div class="col-md-4 video-grids-right">
-						<div class="sap_tabs">
-							<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-								<ul class="resp-tabs-list">
-									<li class="resp-tab-item grid1" aria-controls="tab_item-0" role="tab"><span>most shared</span></li>
-									<li class="resp-tab-item grid2" aria-controls="tab_item-1" role="tab"><span>most read</span></li>
-									<div class="clear"></div>
-								</ul>
-								<div class="resp-tabs-container">
-									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-										<div class="facts">
-											<div class="tab_list">
-												<img src="images/10.jpg" alt=" " class="img-responsive" />
-											</div>
-											<div class="tab_list1">
-												<ul>
-													<li><a href="#">Blogger</a> <label>|</label></li>
-													<li>30.03.2016</li>
-												</ul>
-												<p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-											</div>
-											<div class="clearfix"> </div>
-										</div>
-										<div class="facts">
-											<div class="tab_list">
-												<img src="images/11.jpg" alt=" " class="img-responsive" />
-											</div>
-											<div class="tab_list1">
-												<ul>
-													<li><a href="#" class="green">international</a> <label>|</label></li>
-													<li>30.03.2016</li>
-												</ul>
-												<p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-											</div>
-											<div class="clearfix"> </div>
-										</div>
-										<div class="facts">
-											<div class="tab_list">
-												<img src="images/12.jpg" alt=" " class="img-responsive" />
-											</div>
-											<div class="tab_list1">
-												<ul>
-													<li><a href="#" class="orange">general</a> <label>|</label></li>
-													<li>30.03.2016</li>
-												</ul>
-												<p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-											</div>
-										  <div class="clearfix"> </div>
-										</div>
-										<div class="facts">
-											<div class="tab_list">
-												<img src="images/10.jpg" alt=" " class="img-responsive" />
-											</div>
-											<div class="tab_list1">
-												<ul>
-													<li><a href="#" class="orange1">business</a> <label>|</label></li>
-													<li>30.03.2016</li>
-												</ul>
-												<p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-											</div>
-										  <div class="clearfix"> </div>
-										</div>
-										<div class="facts">
-											<div class="tab_list">
-												<img src="images/12.jpg" alt=" " class="img-responsive" />
-											</div>
-											<div class="tab_list1">
-												<ul>
-													<li><a href="#" class="orange2">world</a> <label>|</label></li>
-													<li>30.03.2016</li>
-												</ul>
-												<p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-											</div>
-										  <div class="clearfix"> </div>
-										</div>
-									</div>
-									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-										<div class="facts">
-											<div class="tab_list">
-												<img src="images/12.jpg" alt=" " class="img-responsive" />
-											</div>
-											<div class="tab_list1">
-												<ul>
-													<li><a href="#">Blogger</a> <label>|</label></li>
-													<li>30.03.2016</li>
-												</ul>
-												<p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-											</div>
-											<div class="clearfix"> </div>
-										</div>
-										<div class="facts">
-											<div class="tab_list">
-												<img src="images/11.jpg" alt=" " class="img-responsive" />
-											</div>
-											<div class="tab_list1">
-												<ul>
-													<li><a href="#" class="orange1">business</a> <label>|</label></li>
-													<li>30.03.2016</li>
-												</ul>
-												<p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-											</div>
-											<div class="clearfix"> </div>
-										</div>
-										<div class="facts">
-											<div class="tab_list">
-												<img src="images/10.jpg" alt=" " class="img-responsive" />
-											</div>
-											<div class="tab_list1">
-												<ul>
-													<li><a href="#" class="orange2">world</a> <label>|</label></li>
-													<li>30.03.2016</li>
-												</ul>
-												<p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-											</div>
-										  <div class="clearfix"> </div>
-										</div>
-										<div class="facts">
-											<div class="tab_list">
-												<img src="images/12.jpg" alt=" " class="img-responsive" />
-											</div>
-											<div class="tab_list1">
-												<ul>
-													<li><a href="#" class="green">international</a> <label>|</label></li>
-													<li>30.03.2016</li>
-												</ul>
-												<p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-											</div>
-										  <div class="clearfix"> </div>
-										</div>
-										<div class="facts">
-											<div class="tab_list">
-												<img src="images/11.jpg" alt=" " class="img-responsive" />
-											</div>
-											<div class="tab_list1">
-												<ul>
-													<li><a href="#" class="orange">general</a> <label>|</label></li>
-													<li>30.03.2016</li>
-												</ul>
-												<p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
-											</div>
-										  <div class="clearfix"> </div>
-										</div>
-									</div>
-								</div>
-								<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
-								<script type="text/javascript">
-									$(document).ready(function () {
-										$('#horizontalTab').easyResponsiveTabs({
-											type: 'default', //Types: default, vertical, accordion
-											width: 'auto', //auto or any width like 600px
-											fit: true   // 100% fit in a container
-										});
-									});
-								</script>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			<!-- //video-grids -->
-			<!-- video-bottom-grids -->
-				<div class="video-bottom-grids">
-					<div class="video-bottom-grids1">
-						<div class="col-md-3 video-bottom-grid">
-							<div class="video-bottom-grid1">
-								<div class="video-bottom-grid1-before">
-									<img src="images/13.jpg" alt=" " class="img-responsive" />
-									<div class="video-bottom-grid1-pos">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing </p>
-									</div>
-								</div>
-								<ul>
-									<li><a href="#">vel illum qui dolorem eum fugiat quo voluptas.</a></li>
-									<li><a href="#">Itaque earum rerum hic tenetur a sapiente delectus.</a></li>
-									<li><a href="#"> Neque porro quisquam est, qui dolor sit amet.</a></li>
-									<li><a href="#">But I must explain to you how all this mistaken.</a></li>
-								</ul>
-								<div class="read-more">
-									<a href="single.html">Read more in business</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 video-bottom-grid">
-							<div class="video-bottom-grid1">
-								<div class="video-bottom-grid1-before before1">
-									<img src="images/14.jpg" alt=" " class="img-responsive" />
-									<div class="video-bottom-grid1-pos">
-										<p>Lorem ipsum dolor sit amet, consectetur.</p>
-									</div>
-								</div>
-								<ul class="list">
-									<li><a href="#">vel illum qui dolorem eum fugiat quo voluptas.</a></li>
-									<li><a href="#">Itaque earum rerum hic tenetur a sapiente delectus.</a></li>
-									<li><a href="#"> Neque porro quisquam est, qui dolor sit amet.</a></li>
-									<li><a href="#">But I must explain to you how all this mistaken.</a></li>
-								</ul>
-								<div class="read-more res">
-									<a href="single.html">Read more in world</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 video-bottom-grid">
-							<div class="video-bottom-grid1">
-								<div class="video-bottom-grid1-before before2">
-									<img src="images/15.jpg" alt=" " class="img-responsive" />
-									<div class="video-bottom-grid1-pos">
-										<p>Lorem ipsum dolor sit amet adipiscing. </p>
-									</div>
-								</div>
-								<ul class="list1">
-									<li><a href="#">vel illum qui dolorem eum fugiat quo voluptas.</a></li>
-									<li><a href="#">Itaque earum rerum hic tenetur a sapiente delectus.</a></li>
-									<li><a href="#"> Neque porro quisquam est, qui dolor sit amet.</a></li>
-									<li><a href="#">But I must explain to you how all this mistaken.</a></li>
-								</ul>
-								<div class="read-more res1">
-									<a href="single.html">Read more in world</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 video-bottom-grid">
-							<div class="video-bottom-grid1">
-								<div class="video-bottom-grid1-before before3">
-									<img src="images/16.jpg" alt=" " class="img-responsive" />
-									<div class="video-bottom-grid1-pos">
-										<p>Lorem ipsum dolor sit amet adipiscing. </p>
-									</div>
-								</div>
-								<ul class="list2">
-									<li><a href="#">vel illum qui dolorem eum fugiat quo voluptas.</a></li>
-									<li><a href="#">Itaque earum rerum hic tenetur a sapiente delectus.</a></li>
-									<li><a href="#"> Neque porro quisquam est, qui dolor sit amet.</a></li>
-									<li><a href="#">But I must explain to you how all this mistaken.</a></li>
-								</ul>
-								<div class="read-more res2">
-									<a href="single.html">Read more in Blogger</a>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="video-bottom-grids1">
-						<div class="col-md-3 video-bottom-grid">
-							<div class="video-bottom-grid1">
-								<div class="video-bottom-grid1-before before4">
-									<img src="images/10.jpg" alt=" " class="img-responsive" />
-									<div class="video-bottom-grid1-pos">
-										<p>Lorem ipsum dolor sit amet adipiscing. </p>
-									</div>
-								</div>
-								<ul class="list2">
-									<li><a href="#">vel illum qui dolorem eum fugiat quo voluptas.</a></li>
-									<li><a href="#">Itaque earum rerum hic tenetur a sapiente delectus.</a></li>
-									<li><a href="#"> Neque porro quisquam est, qui dolor sit amet.</a></li>
-									<li><a href="#">But I must explain to you how all this mistaken.</a></li>
-								</ul>
-								<div class="read-more res3">
-									<a href="single.html">Read more in general</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 video-bottom-grid">
-							<div class="video-bottom-grid1">
-								<div class="video-bottom-grid1-before before5">
-									<img src="images/11.jpg" alt=" " class="img-responsive" />
-									<div class="video-bottom-grid1-pos">
-									<p>Lorem ipsum dolor sit amet adipiscing. </p>
-									</div>
-								</div>
-								<ul class="list4">
-									<li><a href="#">vel illum qui dolorem eum fugiat quo voluptas.</a></li>
-									<li><a href="#">Itaque earum rerum hic tenetur a sapiente delectus.</a></li>
-									<li><a href="#"> Neque porro quisquam est, qui dolor sit amet.</a></li>
-									<li><a href="#">But I must explain to you how all this mistaken.</a></li>
-								</ul>
-								<div class="read-more res4">
-									<a href="single.html">Read more in economics</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 video-bottom-grid">
-							<div class="video-bottom-grid1">
-								<div class="video-bottom-grid1-before before6">
-									<img src="images/12.jpg" alt=" " class="img-responsive" />
-									<div class="video-bottom-grid1-pos">
-										<p>Lorem ipsum dolor sit amet adipiscing. </p>
-									</div>
-								</div>
-								<ul class="list5">
-									<li><a href="#">vel illum qui dolorem eum fugiat quo voluptas.</a></li>
-									<li><a href="#">Itaque earum rerum hic tenetur a sapiente delectus.</a></li>
-									<li><a href="#"> Neque porro quisquam est, qui dolor sit amet.</a></li>
-									<li><a href="#">But I must explain to you how all this mistaken.</a></li>
-								</ul>
-								<div class="read-more res5">
-									<a href="single.html">Read more in sports</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 video-bottom-grid">
-							<div class="video-bottom-grid1">
-								<div class="video-bottom-grid1-before before7">
-									<img src="images/17.jpg" alt=" " class="img-responsive" />
-									<div class="video-bottom-grid1-pos">
-										<p>Lorem ipsum dolor sit amet adipiscing. </p>
-									</div>
-								</div>
-								<ul class="list6">
-									<li><a href="#">vel illum qui dolorem eum fugiat quo voluptas.</a></li>
-									<li><a href="#">Itaque earum rerum hic tenetur a sapiente delectus.</a></li>
-									<li><a href="#"> Neque porro quisquam est, qui dolor sit amet.</a></li>
-									<li><a href="#">But I must explain to you how all this mistaken.</a></li>
-								</ul>
-								<div class="read-more res6">
-									<a href="single.html">Read more in health</a>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-			<!-- //video-bottom-grids -->
-			<!-- news-and-events -->
-				<div class="news">
-					<div class="news-grids">
-						<div class="col-md-8 news-grid-left">
-							<h3>latest news & events</h3>
-							<ul>
-								<li>
-									<div class="news-grid-left1">
-										<img src="images/16.jpg" alt=" " class="img-responsive" />
-									</div>
-									<div class="news-grid-right1">
-										<h4><a href="single.html">Mexico's oil giant is in uncharted waters</a></h4>
-										<h5>By <a href="#">Elizibeth Malkin</a> <label>|</label> <i>30.03.2016</i></h5>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-									</div>
-									<div class="clearfix"> </div>
-								</li>
-								<li>
-									<div class="news-grid-left1">
-										<img src="images/17.jpg" alt=" " class="img-responsive" />
-									</div>
-									<div class="news-grid-right1">
-										<h4><a href="single.html">second wave of votes to legalize marijuana</a></h4>
-										<h5>By <a href="#">james smith</a> <label>|</label> <i>30.03.2016</i></h5>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-									</div>
-									<div class="clearfix"> </div>
-								</li>
-								<li>
-									<div class="news-grid-left1">
-										<img src="images/13.jpg" alt=" " class="img-responsive" />
-									</div>
-									<div class="news-grid-right1">
-										<h4><a href="single.html">Antares rocket, bound for space station, explodes</a></h4>
-										<h5>By <a href="#">Michael Drew</a> <label>|</label> <i>30.03.2016</i></h5>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-									</div>
-									<div class="clearfix"> </div>
-								</li>
-								<li>
-									<div class="news-grid-left1">
-										<img src="images/12.jpg" alt=" " class="img-responsive" />
-									</div>
-									<div class="news-grid-right1">
-										<h4><a href="single.html">stronger family bonds, two years after hurricane sandy</a></h4>
-										<h5>By <a href="#">james smith</a> <label>|</label> <i>30.03.2016</i></h5>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-									</div>
-									<div class="clearfix"> </div>
-								</li>
-								<li>
-									<div class="news-grid-left1">
-										<img src="images/15.jpg" alt=" " class="img-responsive" />
-									</div>
-									<div class="news-grid-right1">
-										<h4><a href="single.html">royal crush giants and force game 7</a></h4>
-										<h5>By <a href="#">Michael Drew</a> <label>|</label> <i>30.03.2016</i></h5>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-									</div>
-									<div class="clearfix"> </div>
-								</li>
-							</ul>
-						</div>
-						<div class="col-md-4 news-grid-right">
-							<div class="news-grid-rght1">
-							<!-- Nav tabs -->
-							  <ul class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a class="high" href="#home" aria-controls="home" role="tab" data-toggle="tab">weather in London</a></li>
-								<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">edit location</a></li>
-							  </ul>
-
-							  <!-- Tab panes -->
-								<div class="tab-content">
-									<div role="tabpanel" class="tab-pane active london" id="home">
-										<ul>
-											<li>
-												<h4>Wednesday</h4>
-												<span></span>
-												<p>21<sup>°</sup></p>
-											</li>
-											<li>
-												<h4>Thursday</h4>
-												<span class="moon"></span>
-												<p>25<sup>°</sup></p>
-											</li>
-											<li>
-												<h4>Friday</h4>
-												<span class="sun"></span>
-												<p>31<sup>°</sup></p>
-											</li>
-											<div class="clearfix"> </div>
-										</ul>
-									</div>
-									<div role="tabpanel" class="tab-pane" id="profile">
-										<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26359652.109742895!2d-113.72446020222534!3d36.24602872499641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1450786850582" frameborder="0" style="border:0" allowfullscreen></iframe>
-									</div>
-								</div>
-							</div>
-							<div class="news-grid-rght2">
-								<h3>subscribe to our newsletter</h3>
-								<p>Get the latest news and updates by signing up to our daily newsletter.We won't sell your email or spam you !</p>
-								<form>
-									<input type="text" value="enter your Email address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'enter your Email address';}">
-									<input type="submit" value="Submit">
-								</form>
-							</div>
-							<div class="news-grid-rght3">
-								<img src="images/18.jpg" alt=" " class="img-responsive" />
-								<div class="story">
-									<p>story of the week</p>
-									<h3><a href="single.html">US hails west Africa Ebola progress</a></h3>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-			<!-- //news-and-events -->
+			<div class="clearfix"></div>
 		</div>
 	</div>
-<!-- //banner-bottom -->
-<!-- footer -->
-	<div class="footer-top-w3layouts-agile">
-		<div class="container">
-			<p>at least 150 missing and there dead in landslide after monsoon
-				rains in central Sri Lanka, officials say <a href="#">http//example.com</a></p>
-		</div>
-	</div>
-	<div class="footer">
-		<div class="container">
-			<div class="footer-grids wthree-agile">
-				<div class="col-md-4 footer-grid-left">
-					<h3>twitter feed</h3>
-					<ul>
-						<li><a href="#">the moment an unlimited #antares rocket exploded seconds after launch
-							<i>http//example.com</i></a><span>15 minutes ago</span></li>
-						<li><a href="mailto:info@example.com" class="cols">@NASA</a> & <a href="mailto:info@example.com" class="cols">
-							@orbital science</a> <a href="#">gathering data on failure #antares rocket bound
-							for international space</a><span>45 minutes ago</span></li>
-						<li><a href="#">ex-cabinet minister chris huhne loses legal challenge over $77,750
-							court costs incurred in speeding points</a><span>1 day ago</span></li>
-					</ul>
-				</div>
-				<div class="col-md-4 footer-grid-left">
-					<h3>contact form</h3>
-					<form>
-						<input type="text" value="enter your full name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'enter your full name';}" required="">
-						<input type="email" value="enter your email address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'enter your email address';}" required="">
-						<textarea onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
-						<input type="submit" value="Submit" >
-					</form>
-				</div>
-				<div class="col-md-4 footer-grid-left">
-					<h3>about us</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-						<span>But I must explain to you how all this mistaken idea of denouncing
-						pleasure and praising pain was born and I will give you a complete
-						account of the system, and expound the actual teachings of the
-						great explorer.</span>
-						<i>- The Entire TLG Team</i></p>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="footer-bottom">
-				<div class="footer-bottom-left-whtree-agileinfo">
-					<p>&copy 2017 Trendy Blog. All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts.</a></p>
-				</div>
-				<div class="footer-bottom-right-whtree-agileinfo">
-					<ul>
-						<li><a href="#" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a></li>
-						<li><a href="#" class="icon-button google"><i class="icon-google"></i><span></span></a></li>
-						<li><a href="#" class="icon-button v"><i class="icon-v"></i><span></span></a></li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-<!-- //footer -->
-<!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
-<!-- //for bootstrap working -->
-</body>
-</html>
+	<!-- content-section-ends-here -->
+@endsection
+
+@section('script')
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			var defaults = {
+			wrapID: 'toTop', // fading element id
+			wrapHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear'
+			};
+			*/
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+		});
+	</script>
+	<script src="/js/ajax.js"></script>
+@endsection

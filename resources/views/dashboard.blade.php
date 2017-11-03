@@ -31,6 +31,11 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <style media="screen">
+    .row-data{
+      cursor: pointer;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -81,6 +86,10 @@
                     </div>
                   </div>
                 </div>
+                {{-- <div class="form-group">
+                  <label for="exampleInputFile">Gambar Berita</label>
+                  <input type="file" id="exampleInputFile" required>
+                </div> --}}
                 <!-- textarea -->
                 <div class="form-group">
                   <label>Deskripsi Berita</label>
@@ -108,7 +117,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                   <th>#</th>
@@ -126,7 +135,7 @@
                   @php
                     $i++;
                   @endphp
-                  <tr>
+                  <tr class="row-data" data-href='news?id={{$news->id}}'>
                     <td>{{ $i }}</td>
                     <td>{{ $news->name }}</td>
                     <td>{{ $news->title }}</td>

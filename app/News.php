@@ -14,4 +14,9 @@ class News extends Model
   {
     return $this->belongsTo('App\Users_rubric');
   }
+
+  public function banner()
+  {
+    return $this->belongsTo('App\Banner');
+  }
 }

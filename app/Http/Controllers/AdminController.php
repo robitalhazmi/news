@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Users_rubric;
 use Auth;
+use App\News;
+use App\Banner;
 
 class AdminController extends Controller
 {
@@ -22,6 +24,22 @@ class AdminController extends Controller
       return view('admin', compact('users', 'users_rubrics'));
     }
     return redirect()->route('login');
+  }
+
+  public function getNews()
+  {
+    $news = News::join('users_rubrics', 'news.users_rubrics_id', '=', 'users_rubrics.id')
+            ->join('rubrics', 'users_rubrics.rubrics_id', '=', 'rubrics.id')
+            ->join('users', 'users_rubrics.users_id', '=', 'users.id')
+            ->select('news.id', 'rubrics.name', 'news.title', 'news.description', 'news.created_at', 'users.username')
+            ->get();
+    $banners = Banner::join('news', 'banners.news_id', '=', 'news.id')
+              ->join('users_rubrics', 'news.users_rubrics_id', '=', 'users_rubrics.id')
+              ->join('rubrics', 'users_rubrics.rubrics_id', '=', 'rubrics.id')
+              ->join('users', 'users_rubrics.users_id', '=', 'users.id')
+              ->select('news.id', 'rubrics.name', 'news.title', 'news.description', 'news.created_at', 'users.username')
+              ->get();
+    return view('news', compact('news', 'banners'));
   }
 
   public function addUser(Request $request)

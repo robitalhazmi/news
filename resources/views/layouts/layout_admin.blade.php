@@ -35,13 +35,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/logo-unair-color.png" class="user-image" alt="User Image">
+              <img src="/dist/img/logo-unair-color.png" class="user-image" alt="User Image">
               <span class="hidden-xs">Admin</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/logo-unair-color.png" class="img-circle" alt="User Image">
+                <img src="/dist/img/logo-unair-color.png" class="img-circle" alt="User Image">
 
                 <p>
                   Admin
@@ -68,7 +68,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/logo-unair-color.png" class="img-circle" alt="User Image">
+          <img src="/dist/img/logo-unair-color.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Admin</p>
@@ -80,7 +80,12 @@
         <li class="header">MAIN NAVIGATION</li>
         <li id="user">
           <a href="admin">
-            <i class="fa fa-dashboard"></i> <span>Olah Pengguna</span>
+            <i class="fa fa-dashboard"></i> <span>Pengguna</span>
+          </a>
+        </li>
+        <li id="news">
+          <a href="admin/news">
+            <i class="fa fa-dashboard"></i> <span>Berita</span>
           </a>
         </li>
       </ul>

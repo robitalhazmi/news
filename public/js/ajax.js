@@ -7,12 +7,12 @@ $(document).ready(function() {
 		    url: 'login',
 		    data: $('#login-form').serialize(),
 		    success: function (data, status) {
-					if (data.success === true) {
-						location.href = 'login';
+					if (data.success == true) {
+						location.href = '/';
 					}
 					else {
-						$('#status')[0].className = 'status';
-						$('#error-login')[0].innerHTML = data.message;
+						$('#status')[0].className = 'contact_msg';
+						$('#status')[0].innerHTML = data.message;
 					}
 					}
 		    });
@@ -66,4 +66,8 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	$(".row-data").click(function() {
+  	window.location = $(this).data("href");
+  });
 });
