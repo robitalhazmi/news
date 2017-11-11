@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\User;
@@ -8,12 +8,13 @@ use App\Users_rubric;
 use Auth;
 use App\News;
 use App\Banner;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
   function __construct()
   {
-    $this->middleware('auth');
+    $this->middleware('auth:admin');
   }
 
   public function getAdmin()
@@ -21,7 +22,7 @@ class AdminController extends Controller
     if (Auth::user()->username == 'admin') {
       $users = User::where('username', '!=', 'admin')->get();
       $users_rubrics = Users_rubric::join('rubrics', 'users_rubrics.rubrics_id', '=', 'rubrics.id')->get();
-      return view('admin', compact('users', 'users_rubrics'));
+      return view('admin.admin', compact('users', 'users_rubrics'));
     }
     return redirect()->route('login');
   }
@@ -39,7 +40,7 @@ class AdminController extends Controller
               ->join('users', 'users_rubrics.users_id', '=', 'users.id')
               ->select('news.id', 'rubrics.name', 'news.title', 'news.description', 'news.created_at', 'users.username')
               ->get();
-    return view('news', compact('news', 'banners'));
+    return view('admin.news', compact('news', 'banners'));
   }
 
   public function addUser(Request $request)

@@ -15,6 +15,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Express News Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+{{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 <script type="application/x-javascript">
 	addEventListener("load", function() {
 		setTimeout(hideURLbar, 0);
@@ -72,11 +73,11 @@
 				<div class="col-md-8 contact-top">
 					<h3>Masuk</h3>
 					<p id="status" class="contact_msg hide"></p>
-					<form id="login-form" method="post">
+					<form id="login-form"  method="post">
 						{{ csrf_field() }}
 						<div class="to">
-							<input type="text" class="text" name="username" placeholder="Nama Pengguna">
-							<input type="password" class="text" name="password" placeholder="Kata Sandi" style="margin-left:20px; margin-right: 20px;">
+							<input type="text" class="text" name="username" placeholder="Nama Pengguna" required>
+							<input type="password" class="text" name="password" placeholder="Kata Sandi" required style="margin-left:20px; margin-right: 20px;">
 						</div>
 						<div class="form-submit1">
 							<input name="submit" type="submit" id="submit" value="Masuk"><br>

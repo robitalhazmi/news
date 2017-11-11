@@ -17,22 +17,35 @@
 			<div class="wrap">
 				<div class="top-menu">
 					<ul>
-						<li><a href="/">Beranda</a></li>
+						<li><a href="{{ route('landing') }}">Beranda</a></li>
 						<li><a href="#">Tentang Kami</a></li>
 						<li><a href="#">Kontak Kami</a></li>
-						@guest
-							<li><a href="/login">Masuk</a></li>
-						@endguest
-						@auth
+						@if (Auth::guard()->check())
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">{{ Auth::user()->username }}<b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="text-transform: none;">{{ Auth::user()->username }}<b class="caret"></b></a>
 								<ul class="dropdown-menu" style="background-color: #000;">
-									<li><a href="/dashboard">Dashboard</a></li>
+									<li>
+										<a href="{{ route('user.dashboard') }}">Dashboard</a>
+									</li>
 									<li class="divider"></li>
-									<li><a href="/logout">Keluar</a></li>
+									<li><a href="{{ route('logout') }}">Keluar</a></li>
 								</ul>
-						  </li>
-						@endauth
+							</li>
+							@elseif (Auth::guard('admin')->check())
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="text-transform: none;">{{ Auth::guard('admin')->user()->username }}<b class="caret"></b></a>
+									<ul class="dropdown-menu" style="background-color: #000;">
+										<li>
+												<a href="{{ route('admin.dashboard') }}">Dashboard</a>
+										</li>
+										<li class="divider"></li>
+										<li><a href="{{ route('logout') }}">Keluar</a></li>
+									</ul>
+								</li>
+							@else
+								<li><a href="{{ route('login') }}">Masuk</a></li>
+						@endif
+
 
 					</ul>
 				</div>
@@ -44,7 +57,7 @@
 		</div>
 		<div class="header-bottom">
 			<div class="logo text-center">
-				<a href="/"><img src="/images/ua-logo.png" alt="" /></a>
+				<a href="/"><img src="{{ asset('images/ua-logo.png') }}" alt="" /></a>
 			</div>
 			<div class="navigation">
 				<nav class="navbar navbar-default" role="navigation">
@@ -62,7 +75,7 @@
 
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
-								<li class="active"><a href="/">Beranda</a></li>
+								<li class="active"><a href="{{ route('landing') }}">Beranda</a></li>
 								<li><a href="#">Olah Raga</a></li>
 								<li><a href="#">Hiburan</a></li>
 								<li><a href="#">Kesehatan</a></li>
@@ -81,8 +94,8 @@
 									</div>
 								</div>
 								<!-- search-scripts -->
-								<script src="/js/classie.js"></script>
-								<script src="/js/uisearch.js"></script>
+								<script src="{{ asset('js/classie.js') }}"></script>
+								<script src="{{ asset('js/uisearch.js') }}"></script>
 								<script>
 									new UISearch(document.getElementById('sb-search'));
 								</script>

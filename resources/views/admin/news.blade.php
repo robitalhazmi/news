@@ -1,4 +1,4 @@
-@extends('layouts.layout_admin')
+@extends('admin.layouts.layout_admin')
 
 @section('title')
   Admin | News

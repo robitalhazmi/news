@@ -1,4 +1,4 @@
-@extends('layouts.layout_user')
+@extends('user.layouts.layout_user')
 
 @section('title')
   Dashboard | News
@@ -8,19 +8,19 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
   <!-- DataTables -->
-  <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -31,14 +31,10 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <style media="screen">
-    .row-data{
-      cursor: pointer;
-    }
-  </style>
 @endsection
 
 @section('content')
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -70,18 +66,18 @@
                   <div class="row">
                     <div class="col-xs-6">
                       <div class="form-group">
+                        <label>Judul Berita</label>
+                        <input type="text" name="title" class="form-control" placeholder="Masukkan ..." required>
+                      </div>
+                    </div>
+                    <div class="col-xs-3">
+                      <div class="form-group">
                         <label>Rubrik Berita</label>
-                        <select class="form-control" name="rubric">
+                        <select class="form-control" name="rubric" required>
                           @foreach ($users_rubrics as $users_rubric)
                             <option value="{{$users_rubric->id}}">{{$users_rubric->name}}</option>
                           @endforeach
                         </select>
-                      </div>
-                    </div>
-                    <div class="col-xs-6">
-                      <div class="form-group">
-                        <label>Judul Berita</label>
-                        <input type="text" name="title" class="form-control" placeholder="Masukkan ..." required>
                       </div>
                     </div>
                   </div>
@@ -93,7 +89,7 @@
                 <!-- textarea -->
                 <div class="form-group">
                   <label>Deskripsi Berita</label>
-                  <textarea type="text" name="description" class="form-control" rows="3" placeholder="Masukkan ..."></textarea>
+                  <textarea type="text" name="description" class="form-control" rows="3" placeholder="Masukkan ..." required></textarea>
                 </div>
                 <div class="form-group">
                   <label>Konten Berita</label>
@@ -105,58 +101,19 @@
                   <button type="submit" class="btn btn-primary">Kirim</button>
                 </div>
               </form>
+
             </div>
           </div>
           <!-- /.box -->
         </div>
         <!-- /.col-->
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Beritaku</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Rubrik</th>
-                  <th>Judul</th>
-                  <th>Deskripsi</th>
-                  <th>Waktu Dibuat</th>
-                </tr>
-                </thead>
-                <tbody>
-                  @php
-                    $i=0;
-                  @endphp
-                @foreach ($news as $news)
-                  @php
-                    $i++;
-                  @endphp
-                  <tr class="row-data" data-href='news?id={{$news->id}}'>
-                    <td>{{ $i }}</td>
-                    <td>{{ $news->name }}</td>
-                    <td>{{ $news->title }}</td>
-                    <td>{{ $news->description }}</td>
-                    <td>{{strftime("%d %b", strtotime($news->created_at))}}. {{strftime("%Y", strtotime($news->created_at))}}</td>
-                  </tr>
-                @endforeach
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
       </div>
       <!-- ./row -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
   <!-- Modal Success-->
     <div class="modal fade" id="modal-news" role="dialog">
       <div class="modal-dialog">
@@ -168,6 +125,26 @@
 
       </div>
     </div>
+    <div class="modal fade" id="modal-image">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 id="title-news" class="modal-title"></h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left close-button" data-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-default">Lihat Berita</button>
+            <button id="upload-image" type="button" class="btn btn-primary">Unggah</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
 @endsection
 
 @section('script')
@@ -221,7 +198,7 @@
   <script>
   var currentURL = window.location.pathname.toString();
   if (currentURL = 'dashboard') {
-    $('li#dashboard').addClass('active')
+    $('li#write').addClass('active')
   }
   </script>
 @endsection

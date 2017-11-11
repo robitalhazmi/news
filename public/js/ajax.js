@@ -2,20 +2,19 @@ $(document).ready(function() {
 
 	$('#login-form').on('submit', function (e) {
 		e.preventDefault();
-		$.ajax({
-		    type: 'post',
-		    url: 'login',
-		    data: $('#login-form').serialize(),
-		    success: function (data, status) {
-					if (data.success == true) {
-						location.href = '/';
-					}
-					else {
-						$('#status')[0].className = 'contact_msg';
-						$('#status')[0].innerHTML = data.message;
-					}
-					}
-		    });
+		var $form = $(this),
+				data = $form.serialize(),
+				url = 'login';
+		var posting = $.post(url, data);
+		posting.done(function (data) {
+			if (data.success == true) {
+				location.href = '/';
+			}
+			else {
+				$('#status')[0].className = 'contact_msg';
+				$('#status')[0].innerHTML = data.message;
+			}
+		})
 	});
 
 	$('#add-user').on('submit', function (e) {
@@ -58,7 +57,6 @@ $(document).ready(function() {
 			url: 'addNews',
 			data: $('#add-news').serialize(),
 			success: function(data, status) {
-
 				$('#modal-open')[0].className = 'hold-transition skin-blue sidebar-mini modal-open';
 				$('#modal-news')[0].className = 'modal fade in';
 				$("#modal-news").css({ 'display': "block"});
@@ -67,7 +65,18 @@ $(document).ready(function() {
 		});
 	});
 
-	$(".row-data").click(function() {
-  	window.location = $(this).data("href");
+	$('.row-data').click(function() {
+
+		$('#modal-foto').click();
+
+		var rowData = $(this).attr('value');
+		var title = $($('.row-title')[rowData]).attr('value');
+		var rowID = $($('.row-id')[rowData]).attr('value');
+		$('#title-news')[0].innerHTML = title;
+		$('#id-image').val(rowID);
   });
+
+	$('#upload-image').click(function () {
+		$('#submit-image').click();
+	});
 });

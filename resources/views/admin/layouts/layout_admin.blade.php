@@ -16,7 +16,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="/" class="logo">
+    <a href="{{ route('landing') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>N</b>WS</span>
       <!-- logo for regular state and mobile devices -->
@@ -35,13 +35,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="/dist/img/logo-unair-color.png" class="user-image" alt="User Image">
+              <img src="{{ asset('dist/img/logo-unair-color.png') }}" class="user-image" alt="User Image">
               <span class="hidden-xs">Admin</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="/dist/img/logo-unair-color.png" class="img-circle" alt="User Image">
+                <img src="{{ asset('dist/img/logo-unair-color.png') }}" class="img-circle" alt="User Image">
 
                 <p>
                   Admin
@@ -51,7 +51,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="logout" class="btn btn-default btn-flat">Keluar</a>
+                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Keluar</a>
                 </div>
               </li>
             </ul>
@@ -68,7 +68,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="/dist/img/logo-unair-color.png" class="img-circle" alt="User Image">
+          <img src="{{ asset('dist/img/logo-unair-color.png') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Admin</p>
@@ -79,12 +79,12 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li id="user">
-          <a href="admin">
+          <a href="{{ route('admin.dashboard') }}">
             <i class="fa fa-dashboard"></i> <span>Pengguna</span>
           </a>
         </li>
         <li id="news">
-          <a href="admin/news">
+          <a href="{{ route('admin.news') }}">
             <i class="fa fa-dashboard"></i> <span>Berita</span>
           </a>
         </li>
