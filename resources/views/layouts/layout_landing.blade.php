@@ -36,7 +36,7 @@
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="text-transform: none;">{{ Auth::guard('admin')->user()->username }}<b class="caret"></b></a>
 									<ul class="dropdown-menu" style="background-color: #000;">
 										<li>
-												<a href="{{ route('admin.dashboard') }}">Dashboard</a>
+												<a href="{{ route('admin.news') }}">Dashboard</a>
 										</li>
 										<li class="divider"></li>
 										<li><a href="{{ route('logout') }}">Keluar</a></li>

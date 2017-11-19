@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout_admin')
 
 @section('title')
-  Berita | News
+  Breaking | News
 @endsection
 
 @section('link')
@@ -32,6 +32,11 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <style media="screen">
+    .row-news{
+      cursor: pointer;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -98,19 +103,88 @@
           <!-- /.box -->
         </div>
         <!-- /.col -->
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Breaking News</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Judul</th>
+                  <th>Deskripsi</th>
+                  <th>Tanggal dibuat</th>
+                  <th>Rubrik</th>
+                  <th>Penulis</th>
+                </tr>
+                </thead>
+                <tbody>
+                  @php
+                    $j = 1;
+                  @endphp
+                  @foreach ($breakings as $breaking)
+                    <tr>
+                      <td>{{$j}}</td>
+                      <td>{{ $breaking->title }}</td>
+                      <td>{{ $breaking->description }}</td>
+                      <td>{{ $breaking->created_at }}</td>
+                      <td>{{ $breaking->name }}</td>
+                      <td>{{ $breaking->username }}</td>
+                    </tr>
+                    @php
+                      $j++;
+                    @endphp
+                  @endforeach
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <button id="button-news" type="button" class="btn btn-warning hide" data-toggle="modal" data-target="#modal-news">
+    Launch Warning Modal
+  </button>
+<div class="modal fade" id="modal-news">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 id="title-news" class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p>Anda yakin menjadikan berita ini sebagai breaking news?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="button-close" type="button" class="btn btn-default pull-left close-button" data-dismiss="modal">Tutup</button>
+        <button type="button" class="btn btn-default pull-left">Lihat Berita</button>
+        <button id="submit-breaking" type="button" class="btn btn-primary">Ya</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 <!-- Modal Success-->
   <div class="modal fade" id="modal-success" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
       <div class="alert alert-success" role="alert">
-        Banner berhasil ditambahkan. Klik <a href="{{ route('admin.news') }}" class="alert-link"> kembali</a>.
+        Banner berhasil ditambahkan. Klik <a href="{{ route('admin.breaking') }}" class="alert-link"> kembali</a>.
       </div>
 
     </div>
@@ -155,7 +229,7 @@
   if (currentURL = 'admin') {
     $('#master').addClass('menu-open active');
     $('#master-ul').css({ 'display': 'block' });
-    $('li#news').addClass('active')
+    $('li#banner').addClass('active')
   }
   </script>
 

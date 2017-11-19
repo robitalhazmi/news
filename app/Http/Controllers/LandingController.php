@@ -25,7 +25,13 @@ class LandingController extends Controller
                        ->join('rubrics', 'users_rubrics.rubrics_id', '=', 'rubrics.id')
                        ->where('users_rubrics.rubrics_id', 2)
                        ->get();
+      //dd(Storage_path('app\public\imageNews\\'.$banners[1]->id.'.jpg'));
       return view('landing', compact('banners', 'news'));
+    }
+
+    public function getBanner($filename)
+    {
+      return response()->download(Storage_path('app\public\imageNews\\'.$filename.'.jpg'), null, [], null);
     }
 
     public function getNews(Request $request)

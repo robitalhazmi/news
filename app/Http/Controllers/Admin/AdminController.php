@@ -7,7 +7,9 @@ use App\User;
 use App\Users_rubric;
 use Auth;
 use App\News;
+use App\Breaking;
 use App\Banner;
+use App\Rubric;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
@@ -17,17 +19,47 @@ class AdminController extends Controller
     $this->middleware('auth:admin');
   }
 
-  public function getAdmin()
+  public function getCategory()
   {
-    if (Auth::user()->username == 'admin') {
-      $users = User::where('username', '!=', 'admin')->get();
-      $users_rubrics = Users_rubric::join('rubrics', 'users_rubrics.rubrics_id', '=', 'rubrics.id')->get();
-      return view('admin.admin', compact('users', 'users_rubrics'));
-    }
-    return redirect()->route('login');
+    $categories = Rubric::get();
+    return view ('admin.category', compact('categories'));
+  }
+
+  public function getUser()
+  {
+    $users = User::where('username', '!=', 'admin')->get();
+    $users_rubrics = Users_rubric::join('rubrics', 'users_rubrics.rubrics_id', '=', 'rubrics.id')->get();
+    $rubrics = Rubric::get();
+    return view('admin.user', compact('users', 'users_rubrics', 'rubrics'));
   }
 
   public function getNews()
+  {
+    $news = News::join('users_rubrics', 'news.users_rubrics_id', '=', 'users_rubrics.id')
+            ->join('rubrics', 'users_rubrics.rubrics_id', '=', 'rubrics.id')
+            ->join('users', 'users_rubrics.users_id', '=', 'users.id')
+            ->select('news.id', 'rubrics.name', 'news.title', 'news.description', 'news.created_at', 'users.username')
+            ->get();
+    return view('admin.news', compact('news'));
+  }
+
+  public function getBreaking()
+  {
+    $news = News::join('users_rubrics', 'news.users_rubrics_id', '=', 'users_rubrics.id')
+            ->join('rubrics', 'users_rubrics.rubrics_id', '=', 'rubrics.id')
+            ->join('users', 'users_rubrics.users_id', '=', 'users.id')
+            ->select('news.id', 'rubrics.name', 'news.title', 'news.description', 'news.created_at', 'users.username')
+            ->get();
+    $breakings = Breaking::join('news', 'breakings.news_id', '=', 'news.id')
+              ->join('users_rubrics', 'news.users_rubrics_id', '=', 'users_rubrics.id')
+              ->join('rubrics', 'users_rubrics.rubrics_id', '=', 'rubrics.id')
+              ->join('users', 'users_rubrics.users_id', '=', 'users.id')
+              ->select('news.id', 'rubrics.name', 'news.title', 'news.description', 'news.created_at', 'users.username')
+              ->get();
+    return view('admin.breaking', compact('news', 'breakings'));
+  }
+
+  public function getBanner()
   {
     $news = News::join('users_rubrics', 'news.users_rubrics_id', '=', 'users_rubrics.id')
             ->join('rubrics', 'users_rubrics.rubrics_id', '=', 'rubrics.id')
@@ -40,7 +72,18 @@ class AdminController extends Controller
               ->join('users', 'users_rubrics.users_id', '=', 'users.id')
               ->select('news.id', 'rubrics.name', 'news.title', 'news.description', 'news.created_at', 'users.username')
               ->get();
-    return view('admin.news', compact('news', 'banners'));
+    return view('admin.banner', compact('news', 'banners'));
+  }
+
+  public function addCategory(Request $request)
+  {
+    $name = $request->category;
+    $rubric = New Rubric();
+    $rubric->name = $name;
+    $rubric->save();
+    return response()->json([
+      'success' => true
+    ]);
   }
 
   public function addUser(Request $request)
@@ -49,16 +92,8 @@ class AdminController extends Controller
     $password = $request->password;
     $confirm_password = $request->confirm_password;
 
-    $check = $request->check;
-    $rubric[0] = $request->rubric1;
-    $rubric[1] = $request->rubric2;
-    $rubric[2] = $request->rubric3;
-    $rubric[3] = $request->rubric4;
-    $rubric[4] = $request->rubric5;
-    $rubric[5] = $request->rubric6;
-    $rubric[6] = $request->rubric7;
-    $rubric[7] = $request->rubric8;
-    $rubric[8] = $request->breaking_news;
+    $category = Rubric::count();
+    $rubric = $request->rubric;
 
     $checkUser = User::where('username', $username)->count();
     if ($password == $confirm_password) {
@@ -67,7 +102,7 @@ class AdminController extends Controller
         $user->username = $username;
         $user->password = bcrypt($password);
         $user->save();
-        for ($i=0; $i < 9; $i++) {
+        for ($i=0; $i < count($rubric); $i++) {
           if ($rubric[$i] != null) {
             $user_rubric[$i] = new Users_rubric();
             $user_rubric[$i]->users_id = $user->id;
@@ -93,5 +128,29 @@ class AdminController extends Controller
         'message' => 'Kata sandi konfirmasi tidak sesuai'
       ]);
     }
+  }
+
+  public function addBreaking(Request $request)
+  {
+    $id = $request->id;
+    $breaking = new Breaking();
+    $breaking->news_id = $id;
+    $breaking->save();
+
+    return response()->json([
+      'succes' => true
+    ]);
+  }
+
+  public function addBanner(Request $request)
+  {
+    $id = $request->id;
+    $banner = new Banner();
+    $banner->news_id = $id;
+    $banner->save();
+
+    return response()->json([
+      'succes' => true
+    ]);
   }
 }

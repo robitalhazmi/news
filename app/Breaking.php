@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Banner extends Model
+class Breaking extends Model
 {
   protected $fillable = [
     'id', 'news_id'

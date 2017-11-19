@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout_admin')
 
 @section('title')
-  Admin | News
+  Pengguna | News
 @endsection
 
 @section('link')
@@ -31,6 +31,12 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <style media="screen">
+    .checkbox{
+      display: inline;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -51,7 +57,52 @@
     <section class="content">
       <div class="row">
         <!-- right column -->
-        <div class="col-md-6">
+        <div class="col-xs-8">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Data Pengguna</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nama Pengguna</th>
+                  <th>Rubrik</th>
+                  <th>Waktu Dibuat</th>
+                </tr>
+                </thead>
+                <tbody>
+                  @php
+                    $i = 1;
+                  @endphp
+                @foreach ($users as $user)
+                  <tr>
+                    <td>{{ $i }}</td>
+                    <td>{{$user->username}}</td>
+                    <td>|
+                      @foreach ($users_rubrics as $users_rubric)
+                        @if ($user->id == $users_rubric->users_id)
+                          {{$users_rubric->name}} |
+                        @endif
+                      @endforeach
+                    </td>
+                    <td>{{strftime("%d %b %Y", strtotime($user->created_at))}}</td>
+                  </tr>
+                  @php
+                    $i++;
+                  @endphp
+                @endforeach
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+        <div class="col-md-4">
           <!-- general form elements disabled -->
           <div class="box box-warning">
             <div class="box-header with-border">
@@ -79,117 +130,19 @@
                 <div class="form-group">
                   <label>Rubrik</label>
                   <div class="box-body">
-                    <div class="row">
-                      <div class="col-xs-4">
-                        <div class="checkbox">
-                          <label>
-                            <input class="check" type="checkbox" name="rubric1" value="1">
-                            Rubrik 1
-                          </label>
-                        </div>
+                    @foreach ($rubrics as $rubric)
+                      <div class="checkbox">
+                      <label>
+                        <input class="check" type="checkbox" name="{{ "rubric[]" }}" value="{{ $rubric->id }}">
+                        {{ $rubric->name }}
+                      </label>
 
-                        <div class="checkbox">
-                          <label>
-                            <input class="check" type="checkbox" name="rubric2" value="2">
-                            Rubrik 2
-                          </label>
-                        </div>
-
-                        <div class="checkbox">
-                          <label>
-                            <input class="check" type="checkbox" name="rubric3" value="3">
-                            Rubrik 3
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-xs-4">
-                        <div class="checkbox">
-                          <label>
-                            <input class="check" type="checkbox" name="rubric4" value="4">
-                            Rubrik 4
-                          </label>
-                        </div>
-
-                        <div class="checkbox">
-                          <label>
-                            <input class="check" type="checkbox" name="rubric5" value="5">
-                            Rubrik 5
-                          </label>
-                        </div>
-
-                        <div class="checkbox">
-                          <label>
-                            <input class="check" type="checkbox" name="rubric6" value="6">
-                            Rubrik 6
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-xs-4">
-                        <div class="checkbox">
-                          <label>
-                            <input class="check" type="checkbox" name="rubric7" value="7">
-                            Rubrik 7
-                          </label>
-                        </div>
-
-                        <div class="checkbox">
-                          <label>
-                            <input class="check" type="checkbox" name="rubric8" value="8">
-                            Rubrik 8
-                          </label>
-                        </div>
-
-                        <div class="checkbox">
-                          <label>
-                            <input class="check" type="checkbox" name="breaking_news" value="9">
-                            Breaking News
-                          </label>
-                        </div>
-                      </div>
                     </div>
+                    @endforeach
                   </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!--/.col (right) -->
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Data Pengguna</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Nama Pengguna</th>
-                  <th>Rubrik</th>
-                  <th>Waktu Dibuat</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach ($users as $user)
-                  <tr>
-                    <td>{{$user->id}}</td>
-                    <td>{{$user->username}}</td>
-                    <td>|
-                      @foreach ($users_rubrics as $users_rubric)
-                        @if ($user->id == $users_rubric->users_id)
-                          {{$users_rubric->name}} |
-                        @endif
-                      @endforeach
-                    </td>
-                    <td>{{strftime("%d %b %Y", strtotime($user->created_at))}}</td>
-                  </tr>
-                @endforeach
-                </tfoot>
-              </table>
             </div>
             <!-- /.box-body -->
           </div>
@@ -208,7 +161,7 @@
 
         <!-- Modal content-->
         <div class="alert alert-success" role="alert">
-          Pengguna berhasil ditambahkan. Klik <a href="{{ route('admin.dashboard') }}" class="alert-link"> kembali</a>.
+          Pengguna berhasil ditambahkan. Klik <a href="{{ route('admin.user') }}" class="alert-link"> kembali</a>.
         </div>
 
       </div>
@@ -260,7 +213,9 @@
   <script>
   var currentURL = window.location.pathname.toString();
   if (currentURL = 'admin') {
-    $('li#user').addClass('active')
+    $('#master').addClass('menu-open active');
+    $('#master-ul').css({ 'display': 'block' });
+    $('li#user').addClass('active');
   }
   </script>
 @endsection

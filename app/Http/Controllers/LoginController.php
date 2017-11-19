@@ -34,11 +34,17 @@ class LoginController extends Controller
           if (Hash::check($password, $user->password)) {
             if ($username == "admin") {
               Auth::guard('admin')->attempt(['username' => $username, 'password' => $password]);
-              return response()->json(['success'=> true]);
+              return response()->json([
+                'success' =>  true,
+                'url'     =>  "admin"
+              ]);
             }
             else {
               $this->guard()->attempt(['username' => $username, 'password' => $password]);
-              return response()->json(['success'=> true]);
+              return response()->json([
+                'success' =>  true,
+                'url'     =>  "dashboard"
+              ]);
             }
           }
           else {

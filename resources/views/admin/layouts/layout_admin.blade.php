@@ -78,16 +78,46 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li id="user">
-          <a href="{{ route('admin.dashboard') }}">
-            <i class="fa fa-dashboard"></i> <span>Pengguna</span>
+        <li>
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li id="news">
-          <a href="{{ route('admin.news') }}">
-            <i class="fa fa-dashboard"></i> <span>Berita</span>
+        <li id="master" class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Master</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul id="master-ul" class="treeview-menu" style="display: none;">
+            <li id="category">
+              <a href="{{ route('admin.category') }}"><i class="fa fa-circle-o"></i> Rubrik</a>
+            </li>
+            <li id="news">
+              <a href="{{ route('admin.news') }}">
+                <i class="fa fa-dashboard"></i> <span>Berita</span>
+              </a>
+            </li>
+            <li id="user">
+              <a href="{{ route('admin.user') }}">
+                <i class="fa fa-dashboard"></i> <span>Pengguna</span>
+              </a>
+            </li>
+            <li id="breaking">
+              <a href="{{ route('admin.breaking') }}">
+                <i class="fa fa-dashboard"></i> <span>Breaking News</span>
+              </a>
+            </li>
+            <li id="banner">
+              <a href="{{ route('admin.banner') }}">
+                <i class="fa fa-dashboard"></i> <span>Banner</span>
+              </a>
+            </li>
+          </ul>
         </li>
+
+
       </ul>
     </section>
     <!-- /.sidebar -->
